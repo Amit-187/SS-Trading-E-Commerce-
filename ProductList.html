@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>SS Trading</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<script>
+  document.getElementById("search-input").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    const products = document.querySelectorAll(".product-item"); // Class applied to product cards
+
+    products.forEach(function (product) {
+      const name = product.querySelector(".product-name").textContent.toLowerCase();
+      if (name.includes(query)) {
+        products.style.display = "block";
+      } else {
+        products.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
+      </symbol>
+
+      <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
+      </symbol>
+
+      <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+          d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="preloader-wrapper">
+    <div class="preloader">
+    </div>
+  </div>
+
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
+    aria-labelledby="Search">
+    <div class="offcanvas-header justify-content-center">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Search</span>
+        </h4>
+        <form role="search" action="index.html" method="get" class="d-flex mt-3 gap-0">
+          <input class="form-control rounded-start rounded-0 bg-light" type="email"
+            placeholder="What are you looking for?" aria-label="What are you looking for?">
+          <button class="btn btn-dark rounded-end rounded-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+ <header>
+    <div class="container-fluid">
+      <div class="row py-3 border-bottom">
+
+        <div class="col-sm-4 col-lg-3 text-center text-sm-start">
+          <div class="main-logo">
+            <a href="index.html">
+              <img src="images/logo/SS_Trading_Logo_Resized.png" alt="logo" class="img-fluid">
+            </a>
+          </div>
+        </div>
+
+        <!-- REPLACED Search Bar with Company Name + Address -->
+        <div class="text-center flex-grow-1 w-auto">
+          <h1 class="mb-0">SS TRADING COMPONY</h1>
+          <p class="mb-0 d-none d-sm-block">Worldwide Supplier of Used Excavator Parts</p>
+        </div>
+
+
+
+        <div
+          class="col-sm-8 col-lg-4 d-flex justify-content-end  align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
+          <div class="support-box text-end d-none d-xl-block">
+            <span class="fs-6 text-muted">For Support?</span>
+            <h5 class="mb-0">+91-9958571063 </h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row py-3">
+        <div class="d-flex  justify-content-center justify-content-sm-between align-items-center">
+          <nav class="main-menu d-flex navbar navbar-expand-lg">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel">
+
+              <div class="offcanvas-header justify-content-center">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+
+              <div class="offcanvas-body">
+
+                <h5 class="filter-categories text-center my-3 border-0 mb-0 me-5">SS Trading Company</h5>
+
+
+                <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
+                  <li class="nav-item active">
+                    <a href="index.html" class="nav-link">Home</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a href="ProductList.html" class="nav-link">Products</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a href="about.html" class="nav-link">Company Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#contact-us" class="nav-link">Contact Us</a>
+                  </li>
+
+
+
+                </ul>
+
+
+              </div>
+
+
+            </div>
+          </nav>
+          <div class="d-flex flex-nowrap ms-auto gap-2 mt-3">
+            <!-- Buttons to trigger modal -->
+            <a href="#" class="btn btn-outline-dark btn-sm text-uppercase fs-6 rounded-1 px-3 py-2"
+              data-bs-toggle="modal" data-bs-target="#myModal">
+              <i class="bi bi-telephone-inbound me-2"></i>Call
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-sm text-uppercase fs-6 rounded-1 px-3 py-2"
+              data-bs-toggle="modal" data-bs-target="#myModal">
+              <i class="bi bi-envelope-at me-2"></i>Mail
+            </a>
+          </div>
+
+          <!-- Modal Structure -->
+          <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModalLabel">Connect with us</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <form id="whatsapp-form" onsubmit="sendWhatsApp(); return false;">
+                  <div class="modal-body">
+                    <p class="mb-3">We will contact you with the details below:</p>
+
+                    <div class="mb-3">
+                      <label for="userPhone" class="form-label">Phone Number</label>
+                      <input type="text" class="form-control" id="contact" placeholder="Enter your number/email..."
+                        required>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userQuery" class="form-label">Your Query</label>
+                      <textarea class="form-control" id="message" rows="4" placeholder="Enter your query..."
+                        required></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Modal Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send on WhatsApp</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <hr>
+
+
+  <section class="py-5 overflow-hidden">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="section-header d-flex flex-wrap justify-content-between my-5">
+
+            <h2 class="section-title">Products Lists</h2>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="container py-5"
+      style="background-image: url('images/background-pattern.jpg');background-repeat: no-repeat;background-size: cover;">
+      <div class="row g-4">
+
+        <!--Product 1-->
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/HYDRAULIC-PUMP.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Product 2-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/Control-valve.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!--Product 3-->
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/HYDRAULIC-PUMP.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Product 4-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/Control-valve.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--Product 5-->
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/HYDRAULIC-PUMP.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Product 6-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/Control-valve.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!--Product 7-->
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/HYDRAULIC-PUMP.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Product 8-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="product-item position-relative border p-3 h-100">
+            <!-- Discount Badge -->
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+
+            <!-- Image with fixed container -->
+            <figure class="text-center mb-3"
+              style="height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <a href="index.html" title="HYDRAULIC PUMP">
+                <img src="images/product/Control-valve.jpg" class="img-fluid" alt="HYDRAULIC PUMP"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </a>
+            </figure>
+
+            <!-- Product Title -->
+            <h5 class="mt-2 text-center text-md-start">HYDRAULIC PUMP</h5>
+
+            <!-- Buttons Row -->
+            <div class="mt-3">
+              <!-- Row 1: Submit Button -->
+              <div class="mb-2">
+                <a href="#" class="btn btn-dark btn-lg w-100">Details</a>
+              </div>
+
+              <!-- Row 2: WhatsApp & Send Enquiry Buttons Side by Side -->
+              <div class="d-flex gap-2">
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#"
+                  class="btn btn-outline-dark btn-sm text-uppercase w-50 d-flex justify-content-center align-items-center">
+                  <i class="bi bi-envelope me-2"></i>
+                  <span>Mail</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="col-6 col-md-4 col-lg-3 product-list">
+          <div class="product-item h-100" id="product">
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+            <figure>
+              <a href="index.html">
+                <img src="images/product/Swing-device.jpg" class="tab-image" alt="Swing device">
+              </a>
+            </figure>
+            <h5 class="mt-3 card-title product-name">Swing device</h5>
+            <div class="d-flex flex-column gap-2 mt-3">
+              <a href="#" class="btn btn-outline-dark btn-sm text-uppercase">
+                <i class="bi bi-whatsapp me-2"></i> WhatsApp
+              </a>
+              <a href="#" class="btn btn-outline-dark btn-sm text-uppercase">Send Enquiry</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="col-6 col-md-4 col-lg-3 product-list">
+          <div class="product-item h-100" id="product">
+            <span class="badge bg-success position-absolute m-2">-15%</span>
+            <figure>
+              <a href="index.html">
+                <img src="images/product/Swing-device.jpg" class="tab-image" alt="Swing device">
+              </a>
+            </figure>
+            <h5 class="mt-3 card-title product-name">Swing device</h5>
+            <div class="d-flex flex-column gap-2 mt-3">
+              <a href="#" class="btn btn-outline-dark btn-sm text-uppercase">
+                <i class="bi bi-whatsapp me-2"></i> WhatsApp
+              </a>
+              <a href="#" class="btn btn-outline-dark btn-sm text-uppercase">Send Enquiry</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more product cards below as needed -->
+        <!--Get back to homepage card-->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="index.html" class="text-decoration-none h-100 d-block">
+            <div
+              class="product-item d-flex flex-column justify-content-center align-items-center border p-3 h-100 text-center">
+              <div class="mb-3">
+                <i class="bi bi-box-seam fs-1 text-dark"></i>
+              </div>
+              <h5 class="mb-2 text-dark">Get Back to Home</h5>
+              <p class="text-muted small">Home</p>
+              <span class="btn btn-outline-dark btn-sm mt-2">Back Home ←</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5" id="contact-us">
+    <div class="container-fluid">
+      <div class="bg-secondary py-5 my-5 rounded-5"
+        style="background: url('images/bg-leaves-img-pattern.png') no-repeat; background-size: cover;">
+
+        <div class="container">
+          <div class="row align-items-center">
+
+            <!-- Left Column: Text -->
+            <div class="col-12 col-md-6 p-4 p-md-5 text-white">
+              <div class="section-header mb-4">
+                <h2 class="section-title display-5 display-md-4">
+                  Get <span class="text-primary">25% Discount</span> on your first purchase
+                </h2>
+              </div>
+              <!--<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst amet, metus, sit massa posuere maecenas. At tellus ut nunc amet vel egestas.</p>
+          -->
+            </div>
+
+            <!-- Right Column: Form -->
+            <div class="col-12 col-md-6 p-4 p-md-5 bg-white rounded-4">
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name">
+                </div>
+
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone No.</label>
+                  <div class="input-group input-group-lg">
+                    <input type="text" disabled class="form-control" name="country_code" id="country_code"
+                      placeholder="+91" style="max-width: 80px;">
+                    <input type="text" class="form-control" name="phone" id="mobile" pattern="[0-9]{10}" maxlength="10"
+                      minlength="10" placeholder="Enter your mobile number...">
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Message" class="form-label">Message</label>
+                  <textarea class="form-control form-control-lg" name="Message" id="Message"
+                    placeholder="Send Enquiry..." rows="3"></textarea>
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container-fluid">
+      <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5">
+        <div class="col">
+          <div class="card mb-3 border-0">
+            <div class="row">
+              <div class="col-md-2 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M21.5 15a3 3 0 0 0-1.9-2.78l1.87-7a1 1 0 0 0-.18-.87A1 1 0 0 0 20.5 4H6.8l-.33-1.26A1 1 0 0 0 5.5 2h-2v2h1.23l2.48 9.26a1 1 0 0 0 1 .74H18.5a1 1 0 0 1 0 2h-13a1 1 0 0 0 0 2h1.18a3 3 0 1 0 5.64 0h2.36a3 3 0 1 0 5.82 1a2.94 2.94 0 0 0-.4-1.47A3 3 0 0 0 21.5 15Zm-3.91-3H9L7.34 6H19.2ZM9.5 20a1 1 0 1 1 1-1a1 1 0 0 1-1 1Zm8 0a1 1 0 1 1 1-1a1 1 0 0 1-1 1Z" />
+                </svg>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body p-0">
+                  <h5>Free delivery</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3 border-0">
+            <div class="row">
+              <div class="col-md-2 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M19.63 3.65a1 1 0 0 0-.84-.2a8 8 0 0 1-6.22-1.27a1 1 0 0 0-1.14 0a8 8 0 0 1-6.22 1.27a1 1 0 0 0-.84.2a1 1 0 0 0-.37.78v7.45a9 9 0 0 0 3.77 7.33l3.65 2.6a1 1 0 0 0 1.16 0l3.65-2.6A9 9 0 0 0 20 11.88V4.43a1 1 0 0 0-.37-.78ZM18 11.88a7 7 0 0 1-2.93 5.7L12 19.77l-3.07-2.19A7 7 0 0 1 6 11.88v-6.3a10 10 0 0 0 6-1.39a10 10 0 0 0 6 1.39Zm-4.46-2.29l-2.69 2.7l-.89-.9a1 1 0 0 0-1.42 1.42l1.6 1.6a1 1 0 0 0 1.42 0L15 11a1 1 0 0 0-1.42-1.42Z" />
+                </svg>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body p-0">
+                  <h5>100% secure payment</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3 border-0">
+            <div class="row">
+              <div class="col-md-2 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M22 5H2a1 1 0 0 0-1 1v4a3 3 0 0 0 2 2.82V22a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-9.18A3 3 0 0 0 23 10V6a1 1 0 0 0-1-1Zm-7 2h2v3a1 1 0 0 1-2 0Zm-4 0h2v3a1 1 0 0 1-2 0ZM7 7h2v3a1 1 0 0 1-2 0Zm-3 4a1 1 0 0 1-1-1V7h2v3a1 1 0 0 1-1 1Zm10 10h-4v-2a2 2 0 0 1 4 0Zm5 0h-3v-2a4 4 0 0 0-8 0v2H5v-8.18a3.17 3.17 0 0 0 1-.6a3 3 0 0 0 4 0a3 3 0 0 0 4 0a3 3 0 0 0 4 0a3.17 3.17 0 0 0 1 .6Zm2-11a1 1 0 0 1-2 0V7h2ZM4.3 3H20a1 1 0 0 0 0-2H4.3a1 1 0 0 0 0 2Z" />
+                </svg>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body p-0">
+                  <h5>Quality guarantee</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3 border-0">
+            <div class="row">
+              <div class="col-md-2 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M12 8.35a3.07 3.07 0 0 0-3.54.53a3 3 0 0 0 0 4.24L11.29 16a1 1 0 0 0 1.42 0l2.83-2.83a3 3 0 0 0 0-4.24A3.07 3.07 0 0 0 12 8.35Zm2.12 3.36L12 13.83l-2.12-2.12a1 1 0 0 1 0-1.42a1 1 0 0 1 1.41 0a1 1 0 0 0 1.42 0a1 1 0 0 1 1.41 0a1 1 0 0 1 0 1.42ZM12 2A10 10 0 0 0 2 12a9.89 9.89 0 0 0 2.26 6.33l-2 2a1 1 0 0 0-.21 1.09A1 1 0 0 0 3 22h9a10 10 0 0 0 0-20Zm0 18H5.41l.93-.93a1 1 0 0 0 0-1.41A8 8 0 1 1 12 20Z" />
+                </svg>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body p-0">
+                  <h5>guaranteed savings</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3 border-0">
+            <div class="row">
+              <div class="col-md-2 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M18 7h-.35A3.45 3.45 0 0 0 18 5.5a3.49 3.49 0 0 0-6-2.44A3.49 3.49 0 0 0 6 5.5A3.45 3.45 0 0 0 6.35 7H6a3 3 0 0 0-3 3v2a1 1 0 0 0 1 1h1v6a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-6h1a1 1 0 0 0 1-1v-2a3 3 0 0 0-3-3Zm-7 13H8a1 1 0 0 1-1-1v-6h4Zm0-9H5v-1a1 1 0 0 1 1-1h5Zm0-4H9.5A1.5 1.5 0 1 1 11 5.5Zm2-1.5A1.5 1.5 0 1 1 14.5 7H13ZM17 19a1 1 0 0 1-1 1h-3v-7h4Zm2-8h-6V9h5a1 1 0 0 1 1 1Z" />
+                </svg>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body p-0">
+                  <h5>Daily offers</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3">
+    &copy; 2017–2025 SS TRADING COMPONY. All Rights Reserved.
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+    <script>
+    function sendWhatsApp() {
+      var contactInput = document.getElementById("contact");
+      var messageInput = document.getElementById("message");
+
+      var contact = contactInput.value;
+      var message = messageInput.value;
+
+      var phoneNumber = "919773875119";
+
+      var fullMessage = `Hey SS Trader, Please contact me on ${contact}. I want to know this ${message}`;
+
+      var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(fullMessage);
+
+      window.open(url, '_blank');
+
+      // ✅ Clear the input fields
+      contactInput.value = "";
+      messageInput.value = "";
+    }
+
+  </script>
+</body>
+
+</html>
