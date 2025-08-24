@@ -162,3 +162,20 @@
 
   //Search functionality - Product List page
 
+//Header
+
+async function loadHTML(id, file) {
+  try {
+    let response = await fetch(file);     // fetch the file (header.html/footer.html)
+    if (!response.ok) throw new Error("Could not load " + file);
+
+    let data = await response.text();     // get file content as text
+    document.getElementById(id).innerHTML = data;  // insert into placeholder
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Load header & footer
+loadHTML("header", "header.html");
+loadHTML("footer", "footer.html");

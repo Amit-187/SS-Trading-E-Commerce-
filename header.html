@@ -1,0 +1,136 @@
+
+  
+
+
+  <header>
+    <div class="container-fluid">
+      <div class="row py-3 border-bottom">
+
+        <div class="col-sm-4 col-lg-3 text-center text-sm-start">
+          <div class="main-logo">
+            <a href="index.html">
+              <img src="images/logo/SS_Trading_Logo_Resized.png" alt="logo" class="img-fluid">
+            </a>
+          </div>
+        </div>
+
+        <!-- REPLACED Search Bar with Company Name + Address -->
+        <div class="text-center flex-grow-1 w-auto">
+          <h1 class="mb-0">SS TRADING COMPONY</h1>
+          <p class="mb-0 d-none d-sm-block">Worldwide Supplier of Used Excavator Parts</p>
+        </div>
+
+
+
+        <div
+          class="col-sm-8 col-lg-4 d-flex justify-content-end  align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
+          <div class="support-box text-end d-none d-xl-block">
+            <span class="fs-6 text-muted">For Support?</span>
+            <h5 class="mb-0">+91-9958571063 </h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row py-3">
+        <div class="d-flex  justify-content-center justify-content-sm-between align-items-center">
+          <nav class="main-menu d-flex navbar navbar-expand-lg">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel">
+
+              <div class="offcanvas-header justify-content-center">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+
+              <div class="offcanvas-body">
+
+                <h5 class="filter-categories text-center my-3 border-0 mb-0 me-5">SS Trading Company</h5>
+
+
+                <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
+                  <li class="nav-item active">
+                    <a href="index.html" class="nav-link">Home</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a href="ProductList.html" class="nav-link">Products</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a href="about.html" class="nav-link">Company Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="index.html#contact-us" class="nav-link">Contact Us</a>
+                  </li>
+
+
+                </ul>
+
+
+              </div>
+
+
+            </div>
+          </nav>
+          <div class="d-flex flex-nowrap ms-auto gap-2 mt-3">
+            <!-- Buttons to trigger modal -->
+            <a href="#" class="btn btn-outline-dark btn-sm text-uppercase fs-6 rounded-1 px-3 py-2"
+              data-bs-toggle="modal" data-bs-target="#myModal">
+              <i class="bi bi-telephone-inbound me-2"></i>Call
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-sm text-uppercase fs-6 rounded-1 px-3 py-2"
+              data-bs-toggle="modal" data-bs-target="#myModal">
+              <i class="bi bi-envelope-at me-2"></i>Mail
+            </a>
+          </div>
+
+          <!-- Modal Structure -->
+          <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModalLabel">Connect with us</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <form id="whatsapp-form" onsubmit="sendWhatsApp(); return false;">
+                  <div class="modal-body">
+                    <p class="mb-3">We will contact you with the details below:</p>
+
+                    <div class="mb-3">
+                      <label for="userPhone" class="form-label">Phone Number</label>
+                      <input type="text" class="form-control" id="contact" placeholder="Enter your number/email..."
+                        required>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userQuery" class="form-label">Your Query</label>
+                      <textarea class="form-control" id="message" rows="4" placeholder="Enter your query..."
+                        required></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Modal Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send on WhatsApp</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <hr>
