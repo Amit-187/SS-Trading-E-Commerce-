@@ -179,3 +179,32 @@ async function loadHTML(id, file) {
 // Load header & footer
 loadHTML("header", "header.html");
 loadHTML("footer", "footer.html");
+
+
+//Whatsapp contact details
+function sendWhatsApp() {
+      var contactInput = document.getElementById("contact");
+      var messageInput = document.getElementById("message");
+
+      var contact = contactInput.value;
+      var message = messageInput.value;
+
+      var phoneNumber = "919773875119";
+
+      var fullMessage = `Hey SS Trader, Please contact me on ${contact}. I want to know this ${message}`;
+
+      var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(fullMessage);
+
+      window.open(url, '_blank');
+
+      // ✅ Clear the input fields
+      contactInput.value = "";
+      messageInput.value = "";
+    }
+
+
+//Whatsapp detail message
+
+function ProductInfoWApps(){
+
+}
