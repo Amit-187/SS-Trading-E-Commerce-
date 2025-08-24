@@ -1,27 +1,27 @@
-(function($) {
+(function ($) {
 
   "use strict";
 
-  var initPreloader = function() {
-    $(document).ready(function($) {
-    var Body = $('body');
-        Body.addClass('preloader-site');
+  var initPreloader = function () {
+    $(document).ready(function ($) {
+      var Body = $('body');
+      Body.addClass('preloader-site');
     });
-    $(window).load(function() {
-        $('.preloader-wrapper').fadeOut();
-        $('body').removeClass('preloader-site');
+    $(window).load(function () {
+      $('.preloader-wrapper').fadeOut();
+      $('body').removeClass('preloader-site');
     });
   }
 
   // init Chocolat light box
-	var initChocolat = function() {
-		Chocolat(document.querySelectorAll('.image-link'), {
-		  imageSize: 'contain',
-		  loop: true,
-		})
-	}
+  var initChocolat = function () {
+    Chocolat(document.querySelectorAll('.image-link'), {
+      imageSize: 'contain',
+      loop: true,
+    })
+  }
 
-  var initSwiper = function() {
+  var initSwiper = function () {
 
     var swiper = new Swiper(".main-swiper", {
       speed: 500,
@@ -104,25 +104,25 @@
     });
   }
 
-  var initProductQty = function(){
+  var initProductQty = function () {
 
-    $('.product-qty').each(function(){
+    $('.product-qty').each(function () {
 
       var $el_product = $(this);
       var quantity = 0;
 
-      $el_product.find('.quantity-right-plus').click(function(e){
-          e.preventDefault();
-          var quantity = parseInt($el_product.find('#quantity').val());
-          $el_product.find('#quantity').val(quantity + 1);
+      $el_product.find('.quantity-right-plus').click(function (e) {
+        e.preventDefault();
+        var quantity = parseInt($el_product.find('#quantity').val());
+        $el_product.find('#quantity').val(quantity + 1);
       });
 
-      $el_product.find('.quantity-left-minus').click(function(e){
-          e.preventDefault();
-          var quantity = parseInt($el_product.find('#quantity').val());
-          if(quantity>0){
-            $el_product.find('#quantity').val(quantity - 1);
-          }
+      $el_product.find('.quantity-left-minus').click(function (e) {
+        e.preventDefault();
+        var quantity = parseInt($el_product.find('#quantity').val());
+        if (quantity > 0) {
+          $el_product.find('#quantity').val(quantity - 1);
+        }
       });
 
     });
@@ -130,7 +130,7 @@
   }
 
   // init jarallax parallax
-  var initJarallax = function() {
+  var initJarallax = function () {
     jarallax(document.querySelectorAll(".jarallax"));
 
     jarallax(document.querySelectorAll(".jarallax-keep-img"), {
@@ -139,8 +139,8 @@
   }
 
   // document ready
-  $(document).ready(function() {
-    
+  $(document).ready(function () {
+
     initPreloader();
     initSwiper();
     initProductQty();
@@ -153,14 +153,14 @@
 
 //Custom Javascript
 
-  // const mobileInput = document.getElementById("mobile");
+// const mobileInput = document.getElementById("mobile");
 
-  // mobileInput.addEventListener("input", () => {
-  //   mobileInput.value = mobileInput.value.replace(/\D/g, '').slice(0, 10);
-  // });
+// mobileInput.addEventListener("input", () => {
+//   mobileInput.value = mobileInput.value.replace(/\D/g, '').slice(0, 10);
+// });
 
 
-  //Search functionality - Product List page
+//Search functionality - Product List page
 
 //Header
 
@@ -183,28 +183,38 @@ loadHTML("footer", "footer.html");
 
 //Whatsapp contact details
 function sendWhatsApp() {
-      var contactInput = document.getElementById("contact");
-      var messageInput = document.getElementById("message");
+  var contactInput = document.getElementById("contact");
+  var messageInput = document.getElementById("message");
 
-      var contact = contactInput.value;
-      var message = messageInput.value;
+  var contact = contactInput.value;
+  var message = messageInput.value;
 
-      var phoneNumber = "919773875119";
+  var phoneNumber = "919773875119";
 
-      var fullMessage = `Hey SS Trader, Please contact me on ${contact}. I want to know this ${message}`;
+  var fullMessage = 
+  `Hello SS Traders,\nKindly call me back or email me at ${contact}.\nI am interested in ${message}.`;  
 
-      var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(fullMessage);
+  var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(fullMessage);
 
-      window.open(url, '_blank');
+  window.open(url, '_blank');
 
-      // ✅ Clear the input fields
-      contactInput.value = "";
-      messageInput.value = "";
-    }
+  // ✅ Clear the input fields
+  contactInput.value = "";
+  messageInput.value = "";
+}
 
 
 //Whatsapp detail message
 
-function ProductInfoWApps(){
+function ProductInfoWApps(prodTitle) {
+  
+  let title = prodTitle.querySelector("h5");
+  console.log(title.innerHTML);
 
+  var phoneNumber = "919773875119";
+
+  var fullMessage = `Hi, I’m interested in your ${title.innerHTML}.\nCan you please send me more details about pricing and availability?  `;
+
+  var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(fullMessage);
+  window.open(url, '_blank');
 }
