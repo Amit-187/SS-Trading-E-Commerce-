@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <title>SS Trading</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -247,8 +247,10 @@
                   </a>
                 </div>
                 <div class="col-12 col-md-6">
-                  <a href="#"
-                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center">
+                  <a href="#" onclick="prodTitleModal(this)"
+                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center"
+                     data-bs-toggle="modal" data-bs-target="#mailModal">
+                     <h5 hidden class="mt-2 text-center text-md-start" id="product-title">HYDRAULIC PUMP</h5>
                     <i class="bi bi-envelope me-2"></i>
                     <span>Mail</span>
                   </a>
@@ -296,8 +298,10 @@
                   </a>
                 </div>
                 <div class="col-12 col-md-6">
-                  <a href="#"
-                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center">
+                 <a href="#" onclick="prodTitleModal(this)"
+                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center"
+                     data-bs-toggle="modal" data-bs-target="#mailModal">
+                     <h5 hidden class="mt-2 text-center text-md-start" id="product-title">SWING DEVICE</h5>
                     <i class="bi bi-envelope me-2"></i>
                     <span>Mail</span>
                   </a>
@@ -345,8 +349,10 @@
                   </a>
                 </div>
                 <div class="col-12 col-md-6">
-                  <a href="#"
-                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center">
+                 <a href="#" onclick="prodTitleModal(this)"
+                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center"
+                     data-bs-toggle="modal" data-bs-target="#mailModal">
+                     <h5 hidden class="mt-2 text-center text-md-start" id="product-title">CONTROL VALVE</h5>
                     <i class="bi bi-envelope me-2"></i>
                     <span>Mail</span>
                   </a>
@@ -393,8 +399,10 @@
                   </a>
                 </div>
                 <div class="col-12 col-md-6">
-                  <a href="#"
-                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center">
+                  <a href="#" onclick="prodTitleModal(this)"
+                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center"
+                     data-bs-toggle="modal" data-bs-target="#mailModal">
+                   <h5 hidden class="mt-2 text-center text-md-start" id="product-title">HYDRAULIC PUMP</h5>
                     <i class="bi bi-envelope me-2"></i>
                     <span>Mail</span>
                   </a>
@@ -441,8 +449,10 @@
                   </a>
                 </div>
                 <div class="col-12 col-md-6">
-                  <a href="#"
-                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center">
+                  <a href="#" onclick="prodTitleModal(this)"
+                    class="btn btn-outline-dark btn-sm text-uppercase w-100 d-flex justify-content-center align-items-center"
+                     data-bs-toggle="modal" data-bs-target="#mailModal">
+                    <h5 hidden class="mt-2 text-center text-md-start" id="product-title">HYDRAULIC PUMP</h5>
                     <i class="bi bi-envelope me-2"></i>
                     <span>Mail</span>
                   </a>
@@ -474,6 +484,56 @@
         </div>
 
       </div>
+
+
+       <!-- Modal Structure -->
+          <div class="modal fade" id="mailModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModalLabel">Connect with us</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <form id="prodForm" onsubmit="prodEnquiry(); return false;">
+                  <input type="hidden" name="access_key" value="d0bf50c7-87cf-46dd-bd5e-d3a2e25d3958">
+                  <div class="modal-body">
+                    <p class="mb-3">Tell us your enquiry for product</p>
+
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Product Title</label>
+                      <input type="text" class="form-control" id="prodName" name="name"
+                        readonly>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="Contact" class="form-label">Phone Number</label>
+                      <input type="text" class="form-control" id="contact" name="Contact" placeholder="Enter your number/email..."
+                        required>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="Enquiry" class="form-label">Your Query</label>
+                      <textarea class="form-control" id="message" name="Enquiry" rows="4" placeholder="Enter your query..."
+                        required></textarea>
+                    </div>
+                  </div>
+                  <div id="prodResult"></div>
+
+                  <!-- Modal Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send on WhatsApp</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
   </section>
 
 
@@ -631,45 +691,6 @@
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
   <script>
-
-    const form = document.getElementById('form');
-    const result = document.getElementById('result');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-      result.innerHTML = "Please wait..."
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json
-      })
-        .then(async (response) => {
-          let json = await response.json();
-          if (response.status == 200) {
-            result.innerHTML = "Form submitted successfully";
-          } else {
-            console.log(response);
-            result.innerHTML = json.message;
-          }
-        })
-        .catch(error => {
-          console.log(error);
-          result.innerHTML = "Something went wrong!";
-        })
-        .then(function () {
-          form.reset();
-          setTimeout(() => {
-            result.style.display = "none";
-          }, 3000);
-        });
-    });
 
   </script>
 </body>
